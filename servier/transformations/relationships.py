@@ -3,7 +3,6 @@ import pandas as pd
 
 
 class Relationships:
-
     def __init__(self):
         self.data = None
 
