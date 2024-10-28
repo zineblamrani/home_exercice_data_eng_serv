@@ -1,4 +1,4 @@
-from servier.lib.data_sources.csv import SourceCsv
+from servier.lib.io.csv import SourceCsv
 
 
 class Drugs(SourceCsv):

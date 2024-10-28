@@ -1,5 +1,6 @@
-from servier.lib.data_sources.csv import SourceCsv
+from servier.lib.io.csv import SourceCsv
 
 
 class Pubs(SourceCsv):
     filepath: str = "docs/pubmed.csv"
+    date_columns: list[str] = ["date"]
