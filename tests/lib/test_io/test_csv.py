@@ -14,8 +14,8 @@ def test_source_csv(input_csvfile_path):
     class Meds(SourceCsv):
         filepath: str = input_csvfile_path
 
-    drug = Meds()
-    drug.load()
+    meds = Meds()
+    meds.load()
 
-    assert list(drug.data.columns) == ["id", "name"]
-    assert drug.data.shape == (1, 2)
+    assert list(meds.data.columns) == ["id", "name"]
+    assert meds.data.shape == (1, 2)
