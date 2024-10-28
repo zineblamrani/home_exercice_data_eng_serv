@@ -1,19 +1,27 @@
 from servier.data_sources.drugs import Drugs
 from servier.data_sources.pubs import Pubs
 from servier.data_sources.trials import Trials
-from servier.transformations.references import References
+from servier.data_targets.references import References
+from servier.transformations.relationships import Relationships
 
-drugs = Drugs()
-drugs.load()
-print(f"{drugs.data[:10]}")
 
-pubs = Pubs()
-pubs.load()
-print(f"{pubs.data[:10]}")
+def run_pipeline():
+    drugs = Drugs()
+    drugs.load()
 
-trials = Trials()
-trials.load()
-print(f"{trials.data[:10]}")
+    pubs = Pubs()
+    pubs.load()
 
-references = References()
-references.load(drugs, pubs, trials)
+    trials = Trials()
+    trials.load()
+
+    relationships = Relationships()
+    relationships.load(drugs, pubs, trials)
+
+    references = References()
+    references.load(relationships)
+    references.write()
+
+
+if __name__ == "__main__":
+    run_pipeline()
